@@ -13,7 +13,7 @@ const WorkTogether = () => {
           connect and build something amazing together.
         </p>
         <a
-          href="#!"
+          href="mailto:aniketsingh7141340@gmail.com"
           className="btn btn-primary px-4 md:px-6.5 py-3 md:py-6 text-[12px] md:text-[16px]"
         >
           Let's work Together

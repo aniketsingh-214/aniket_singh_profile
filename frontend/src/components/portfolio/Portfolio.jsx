@@ -87,10 +87,12 @@ const Portfolio = () => {
       </div>
       <div className="text-center">
         <a
-          href="#!"
+          href="https://github.com/aniketsingh-214/"
+          target="_blank"
+          rel="noreferrer"
           className="btn btn-primary py-3 px-6 mt-12.5 text-center text-[16px] font-semibold"
         >
-          More Project
+          More Projects on GitHub
         </a>
       </div>
     </div>

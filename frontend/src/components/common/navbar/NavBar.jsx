@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
-import logo from "../../../assets/logo.png";
+const logo = "/logo_image.png";
 import { Link } from "react-scroll";
 
 const navItems = [
-  { id: 1, name: "Home", url: "introduction" },
-  { id: 2, name: "About", url: "profile" },
-  { id: 3, name: "Process", url: "work-process" },
-  { id: 4, name: "Portfolio", url: "portfolio" },
-  { id: 5, name: "Blog", url: "blog" },
-  { id: 6, name: "Services", url: "services" },
+  { id: 1, name: "Home",      scrollTo: "introduction" },
+  { id: 2, name: "About",     scrollTo: "profile" },
+  { id: 3, name: "Process",   scrollTo: "work-process" },
+  { id: 4, name: "Portfolio", scrollTo: "portfolio" },
+  { id: 5, name: "Blog",      scrollTo: "blog" },
+  { id: 6, name: "Services",  scrollTo: "services" },
 ];
 
 const handleMenuClick = () => {
@@ -21,7 +21,7 @@ const menu = navItems.map((item) => (
   <li key={item.id} onMouseDown={(e) => e.preventDefault()}>
     <Link
       onClick={handleMenuClick}
-      to={item.url.toLowerCase()}
+      to={item.scrollTo}
       smooth={true}
       duration={1000}
       spy={true}
@@ -92,9 +92,15 @@ const NavBar = () => {
             duration={900}
             className="flex items-center border-0 lg:max-xxl:ps-5"
           >
-            <img src={logo} className="h-8 sm:h-14 rounded-2xl" alt="logo" />
+            <div className="h-10 w-10 sm:h-14 sm:w-14 rounded-full overflow-hidden flex items-center justify-center bg-white border border-gray-100 shadow-sm">
+              <img
+                src={logo}
+                className="h-full w-full object-cover"
+                alt="Aniket Singh logo"
+              />
+            </div>
             <p className="text-2xl sm:text-[32px] my-auto ms-[12px] font-semibold">
-              Brooklyn
+              Aniket Singh
             </p>
           </Link>
         </div>

@@ -3,21 +3,21 @@ import Roles from "./Roles";
 const rolesData = [
   {
     id: 1,
-    title: "User Experience (UX)",
+    title: "Full-Stack Development",
     description:
-      "I design intuitive and enjoyable experiences by understanding user needs, conducting research, and creating wireframes and prototypes that enhance usability.",
+      "I build end-to-end web applications using React.js on the frontend and Node.js + Express on the backend, with MongoDB for data persistence. From REST APIs to real-time features.",
   },
   {
     id: 2,
-    title: "User Interface (UI)",
+    title: "API Design & Authentication",
     description:
-      "I craft visually appealing and consistent interfaces, focusing on layout, color, and typography to ensure a seamless and engaging user journey.",
+      "I design and implement secure RESTful APIs with JWT authentication, role-based access control, and third-party integrations like OAuth and payment gateways.",
   },
   {
     id: 3,
-    title: "Web Development",
+    title: "Problem Solving & DSA",
     description:
-      "I build responsive and high-performance web applications using modern technologies, ensuring accessibility, scalability, and maintainability.",
+      "With 200+ problems solved on LeetCode, I apply algorithmic thinking to write optimised, clean, and maintainable code — ensuring both performance and readability.",
   },
 ];
 
@@ -31,18 +31,19 @@ const Profession = () => {
         <p className="section-title max-md:text-center">What I do?</p>
         <div className="mt-6 text-[14px]">
           <p className="text-xs sm:text-lg font-normal text-gray-400 mb-4">
-            I specialize in designing user experiences, crafting engaging
-            interfaces, and building robust web applications that deliver value
-            and usability.
+            I specialise in building full-stack web applications — from intuitive
+            React frontends to robust Node.js backends. Every project is
+            crafted with clean code, solid architecture, and a focus on
+            real-world impact.
           </p>
           <p className="text-xs sm:text-lg font-normal text-gray-400">
-            My approach combines creativity and technical expertise to deliver
-            solutions that are both visually appealing and highly functional for
-            users.
+            My approach combines technical depth with product thinking — I
+            don&apos;t just write code, I solve problems and build things
+            people actually use.
           </p>
         </div>
         <a
-          href="#!"
+          href="mailto:aniketsingh7141340@gmail.com"
           className="mt-5 md:mt-12.5 btn btn-primary text-white w-fit md:py-3 md:px-6 text-[12px] sm:text-[16px] font-semibold max-md:mx-auto max-md:mb-5"
         >
           Say Hello!
