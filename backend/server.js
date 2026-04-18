@@ -16,12 +16,9 @@ const PORT = process.env.PORT || 5000;
 app.use(express.json({ limit: "10kb" }));
 app.use(express.urlencoded({ extended: true }));
 
-// CORS — allow only the configured frontend origin
-const allowedOrigins = [
-  process.env.FRONTEND_ORIGIN || "http://localhost:5173",
-  // Add production URL when deployed, e.g.:
-  // "https://aniketsingh.github.io"
-];
+const allowedOrigins = (process.env.FRONTEND_ORIGIN || "http://localhost:5173")
+  .split(",")
+  .map((o) => o.trim());
 
 app.use(
   cors({
@@ -39,6 +36,21 @@ app.use(
 );
 
 // ── Routes ────────────────────────────────────────────────────
+app.get("/", (_req, res) => {
+  res.send(`
+    <body style="font-family: sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; background: #0f172a; color: white;">
+      <div style="text-align: center; border: 1px solid #334155; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+        <h1 style="color: #818cf8; margin-bottom: 10px;">🚀 Backend Deployment Successful</h1>
+        <p style="color: #94a3b8; font-size: 1.1rem;">Aniket Singh Portfolio Backend is live and operational.</p>
+        <div style="margin-top: 20px; font-size: 0.9rem; color: #64748b;">
+          Service: API Handler (Nodemailer) <br/>
+          Status: Active
+        </div>
+      </div>
+    </body>
+  `);
+});
+
 app.get("/api/health", (_req, res) => {
   res.json({
     status: "ok",

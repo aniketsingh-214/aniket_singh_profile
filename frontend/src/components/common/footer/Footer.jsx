@@ -20,7 +20,7 @@ const Footer = () => {
           <div className="h-10 w-10 sm:h-14 sm:w-14 rounded-full overflow-hidden flex items-center justify-center bg-white border border-gray-100 shadow-sm">
             <img
               src={logo}
-              className="h-full w-full object-cover"
+              className="h-full w-full object-contain p-1"
               alt="Aniket Singh logo"
             />
           </div>

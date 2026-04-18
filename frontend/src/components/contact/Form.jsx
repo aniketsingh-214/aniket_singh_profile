@@ -51,7 +51,8 @@ const Form = () => {
     setResponseMsg("");
 
     try {
-      const res = await fetch("/api/contact", {
+      const apiPrefix = import.meta.env.VITE_API_BASE_URL || "";
+      const res = await fetch(`${apiPrefix}/api/contact`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
