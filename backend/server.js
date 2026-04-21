@@ -7,14 +7,28 @@
 import "dotenv/config";
 import express from "express";
 import cors from "cors";
+import helmet from "helmet";
+import compression from "compression";
+import morgan from "morgan";
+import logger from "./utils/logger.js";
 import contactRoutes from "./routes/contactRoutes.js";
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 // ── Middleware ────────────────────────────────────────────────
+app.use(helmet()); // Security headers
+app.use(compression()); // Compress responses
 app.use(express.json({ limit: "10kb" }));
 app.use(express.urlencoded({ extended: true }));
+
+// HTTP Request Logging (Morgan)
+const morganFormat = process.env.NODE_ENV === "production" ? "combined" : "dev";
+app.use(
+  morgan(morganFormat, {
+    stream: { write: (message) => logger.http(message.trim()) },
+  })
+);
 
 const allowedOrigins = (process.env.FRONTEND_ORIGIN || "http://localhost:5173")
   .split(",")
@@ -27,6 +41,7 @@ app.use(
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
+        logger.warn(`CORS blocked for origin: ${origin}`);
         callback(new Error(`CORS blocked for origin: ${origin}`));
       }
     },
@@ -62,19 +77,23 @@ app.get("/api/health", (_req, res) => {
 app.use("/api/contact", contactRoutes);
 
 // 404 handler
-app.use((_req, res) => {
+app.use((req, res) => {
+  logger.warn(`404 - Not Found: ${req.originalUrl}`);
   res.status(404).json({ success: false, message: "Route not found." });
 });
 
 // Global error handler
-app.use((err, _req, res, _next) => {
-  console.error("Unhandled error:", err.message);
-  res.status(500).json({ success: false, message: "Internal server error." });
+app.use((err, req, res, _next) => {
+  logger.error(`Error processing ${req.method} ${req.url}: ${err.message}`);
+  res.status(err.status || 500).json({
+    success: false,
+    message: process.env.NODE_ENV === "production" ? "Internal server error." : err.message,
+  });
 });
 
 // ── Start ─────────────────────────────────────────────────────
 app.listen(PORT, () => {
-  console.log(`\n🚀 Backend server running on http://localhost:${PORT}`);
-  console.log(`   ➜ Health check: http://localhost:${PORT}/api/health`);
-  console.log(`   ➜ Contact API:  http://localhost:${PORT}/api/contact\n`);
+  logger.info(`Backend server running on http://localhost:${PORT}`);
+  logger.info(`Health check: http://localhost:${PORT}/api/health`);
+  logger.info(`Contact API:  http://localhost:${PORT}/api/contact`);
 });

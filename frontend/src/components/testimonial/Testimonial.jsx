@@ -10,24 +10,24 @@ import "./testimonial.css";
 const testimonialData = [
   {
     message:
-      "Working with this team was a fantastic experience. Their attention to detail and commitment to quality exceeded our expectations.",
-    quote: `From the initial consultation to the final delivery, every step was handled professionally. The end result was a product that not only met our needs but also impressed our stakeholders. Highly recommended!`,
-    name: "Esther Howard",
-    designation: "Managing Director, ABC Company",
+      "Worked with Aniket during his internship and found him very reliable and consistent in delivering features on time.",
+    quote: `He has a good understanding of both frontend and backend systems. He was able to take ownership of tasks, solve issues independently, and maintain clean code throughout the project.`,
+    name: "Team Lead",
+    designation: "Backend Team, Internship",
   },
   {
     message:
-      "Their expertise in UI/UX design helped us transform our digital presence and improve user engagement.",
-    quote: `The team demonstrated a deep understanding of our requirements and delivered a solution that was both visually appealing and highly functional. Communication was clear throughout the project.`,
-    name: "Ali Haider",
-    designation: "COO, XYZ Company",
+      "Aniket contributed to improving our frontend performance and overall user experience.",
+    quote: `He quickly understood the project requirements and implemented changes that made the application faster and more responsive. Communication was smooth and he was open to feedback.`,
+    name: "Project Manager",
+    designation: "Frontend Team, Internship",
   },
   {
     message:
-      "Professional, reliable, and creative—everything you want in a development partner.",
-    quote: `They delivered our project on time and went above and beyond to ensure our satisfaction. The new features have made a significant difference for our users. We look forward to working together again.`,
-    name: "Elon Max",
-    designation: "Managing Director, KFC Company",
+      "Strong problem-solving skills and a practical approach to development.",
+    quote: `Aniket focuses on understanding the problem before jumping into coding. He writes structured and maintainable code, and is always willing to improve based on suggestions.`,
+    name: "Senior Developer",
+    designation: "Mentor / Reviewer",
   },
 ];
 

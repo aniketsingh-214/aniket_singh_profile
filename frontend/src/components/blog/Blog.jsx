@@ -1,7 +1,9 @@
-import img1 from "../../assets/images/blog/blog-1.jpg";
-import img2 from "../../assets/images/blog/blog-2.jpg";
-import img3 from "../../assets/images/blog/blog-3.jpg";
-import img4 from "../../assets/images/blog/blog-4.jpg";
+import img1 from "../../assets/images/blog/img1.jpg";
+import img2 from "../../assets/images/blog/img2.png";
+import img3 from "../../assets/images/blog/img3.png";
+import img4 from "../../assets/images/blog/img4.jfif";
+import img5 from "../../assets/images/blog/img5.png";
+import img6 from "../../assets/images/blog/img6.jfif";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import MonoBlog from "./MonoBlog";
@@ -29,49 +31,49 @@ const blogData = [
   {
     id: 1,
     image: img1,
-    date: "22 Oct, 2020",
-    comments: 246,
-    title: "Designing Engaging User Interfaces for Modern Web Apps",
+    date: "10 Apr, 2026",
+    comments: 0,
+    title: "How I Built a Real-Time Chat App Using MERN and Socket.io",
     link: "#!",
   },
   {
     id: 2,
     image: img2,
-    date: "22 Oct, 2020",
-    comments: 246,
-    title: "Tips for Effective Dashboard Layouts and Usability",
+    date: "05 Apr, 2026",
+    comments: 0,
+    title: "Understanding JWT Authentication in Simple Terms",
     link: "#!",
   },
   {
     id: 3,
     image: img3,
-    date: "22 Oct, 2020",
-    comments: 246,
-    title: "How to Visualize Data for Better Product Decisions",
+    date: "28 Mar, 2026",
+    comments: 0,
+    title: "How to Design Clean and Scalable REST APIs",
     link: "#!",
   },
   {
     id: 4,
     image: img4,
-    date: "22 Oct, 2020",
-    comments: 246,
-    title: "Responsive Design: Adapting to All Devices Seamlessly",
+    date: "20 Mar, 2026",
+    comments: 0,
+    title: "Improving Web App Performance: What Actually Works",
     link: "#!",
   },
   {
     id: 5,
-    image: img2,
-    date: "22 Oct, 2020",
-    comments: 246,
-    title: "Streamlining Workflows with UI/UX Best Practices",
+    image: img5,
+    date: "15 Mar, 2026",
+    comments: 0,
+    title: "Connecting Frontend and Backend: A Practical Guide",
     link: "#!",
   },
   {
     id: 6,
-    image: img1,
-    date: "22 Oct, 2020",
-    comments: 246,
-    title: "Optimizing Interface Components for Performance",
+    image: img6,
+    date: "10 Mar, 2026",
+    comments: 0,
+    title: "Lessons Learned from Building Full-Stack Projects",
     link: "#!",
   },
 ];
