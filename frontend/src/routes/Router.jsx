@@ -1,12 +1,12 @@
 import { lazy, Suspense } from "react";
-import { createBrowserRouter, Navigate } from "react-router-dom";
+import { createHashRouter, Navigate } from "react-router-dom";
 import Loading from "../components/common/loading/Loading";
 const Home = lazy(() => import("../pages/Home"));
 const Main = lazy(() => import("../layouts/Main"));
 
 const repoName = import.meta.env.VITE_REPO_NAME || "";
 
-export const router = createBrowserRouter(
+export const router = createHashRouter(
   [
     {
       path: `/`,
@@ -16,11 +16,10 @@ export const router = createBrowserRouter(
         </Suspense>
       ),
       children: [
-        // Redirect root to /home
-        { index: true, element: <Navigate to="/home" replace /> },
+        // Render Home at the root index
+        { index: true, element: <Home /> },
         // Named routes — all render the same single-page Home component
         // Sections are scroll-based; routes allow direct linking & SEO
-        { path: "home",      element: <Home /> },
         { path: "about",     element: <Home /> },
         { path: "process",   element: <Home /> },
         { path: "portfolio", element: <Home /> },
