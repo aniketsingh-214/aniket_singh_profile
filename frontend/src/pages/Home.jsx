@@ -1,3 +1,6 @@
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import { scroller } from "react-scroll";
 import Introduction from "../components/introduction/Introduction";
 import Profile from "../components/profile/Profile";
 import WorkProcess from "../components/workProcess/WorkProcess";
@@ -11,6 +14,31 @@ import Contact from "../components/contact/Contact";
 import "../../index.css";
 
 const Home = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    // Map paths to section IDs
+    const pathToSection = {
+      "/": "introduction",
+      "/about": "profile",
+      "/process": "work-process",
+      "/portfolio": "portfolio",
+      "/blog": "blog",
+      "/services": "services",
+      "/contact": "contact",
+    };
+
+    const sectionId = pathToSection[pathname];
+    if (sectionId) {
+      scroller.scrollTo(sectionId, {
+        duration: 1000,
+        delay: 0,
+        smooth: "easeInOutQuart",
+        offset: -140, // Match NavBar offset
+      });
+    }
+  }, [pathname]);
+
   return (
     <div className="relative">
       <div className="introduction-profile-background">

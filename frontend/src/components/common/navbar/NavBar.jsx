@@ -1,44 +1,50 @@
 import { useEffect, useState } from "react";
-const logo = "/logo_image.png";
 import { Link } from "react-scroll";
+import { useNavigate } from "react-router-dom";
+const logo = "/logo_image.png";
 
 const navItems = [
-  { id: 1, name: "Home",      scrollTo: "introduction" },
-  { id: 2, name: "About",     scrollTo: "profile" },
-  { id: 3, name: "Process",   scrollTo: "work-process" },
-  { id: 4, name: "Portfolio", scrollTo: "portfolio" },
-  { id: 5, name: "Blog",      scrollTo: "blog" },
-  { id: 6, name: "Services",  scrollTo: "services" },
+  { id: 1, name: "Home",      scrollTo: "introduction", path: "/" },
+  { id: 2, name: "About",     scrollTo: "profile",      path: "/about" },
+  { id: 3, name: "Process",   scrollTo: "work-process", path: "/process" },
+  { id: 4, name: "Portfolio", scrollTo: "portfolio",    path: "/portfolio" },
+  { id: 5, name: "Blog",      scrollTo: "blog",         path: "/blog" },
+  { id: 6, name: "Services",  scrollTo: "services",     path: "/services" },
 ];
-
-const handleMenuClick = () => {
-  if (document.activeElement instanceof HTMLElement) {
-    document.activeElement.blur();
-  }
-};
-
-const menu = navItems.map((item) => (
-  <li key={item.id} onMouseDown={(e) => e.preventDefault()}>
-    <Link
-      onClick={handleMenuClick}
-      to={item.scrollTo}
-      smooth={true}
-      duration={1000}
-      spy={true}
-      offset={-140}
-      activeStyle={{
-        backgroundColor: "#9929fb",
-        color: "white",
-      }}
-      className={`hover:text-picto-primary px-5 py-3 mx-1`}
-    >
-      {item.name}
-    </Link>
-  </li>
-));
 
 const NavBar = () => {
   const [position, setPosition] = useState(0);
+  const navigate = useNavigate();
+
+  const handleMenuClick = () => {
+    if (document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur();
+    }
+  };
+
+  const menu = navItems.map((item) => (
+    <li key={item.id} onMouseDown={(e) => e.preventDefault()}>
+      <Link
+        onClick={handleMenuClick}
+        to={item.scrollTo}
+        smooth={true}
+        duration={1000}
+        spy={true}
+        offset={-140}
+        activeStyle={{
+          backgroundColor: "#9929fb",
+          color: "white",
+        }}
+        className={`hover:text-picto-primary px-5 py-3 mx-1`}
+        onActivate={() => {
+          // Update URL without adding to history to prevent back-button loop
+          navigate(item.path, { replace: true });
+        }}
+      >
+        {item.name}
+      </Link>
+    </li>
+  ));
 
   useEffect(() => {
     const handleScroll = () => {
@@ -91,6 +97,7 @@ const NavBar = () => {
             smooth={true}
             duration={900}
             className="flex items-center border-0 lg:max-xxl:ps-5"
+            onActivate={() => navigate("/", { replace: true })}
           >
             <div className="h-10 w-10 sm:h-14 sm:w-14 rounded-full overflow-hidden flex items-center justify-center bg-white border border-gray-100 shadow-sm">
               <img
@@ -116,6 +123,7 @@ const NavBar = () => {
               to={`contact`}
               smooth={true}
               duration={900}
+              onActivate={() => navigate("/contact", { replace: true })}
             >
               Contact
             </Link>
